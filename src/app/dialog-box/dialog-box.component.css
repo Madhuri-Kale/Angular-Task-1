@@ -1,0 +1,19 @@
+.navbar button{
+    display: flex;
+    justify-content: flex-end;
+}
+.card{
+    padding: 20px;
+    margin: 40px;
+}
+.card img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
+}
+.card img:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}

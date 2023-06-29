@@ -3,16 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
+import { MyShoppingBagService } from './shared/services/myShoppingBag.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogBoxComponent,
+    ShoppingBagComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    MyShoppingBagService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

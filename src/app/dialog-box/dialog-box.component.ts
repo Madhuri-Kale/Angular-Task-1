@@ -16,20 +16,10 @@ export class DialogBoxComponent implements OnInit{
   qty : any = 1;
   id : any = 1;
   listData : any;
- 
+  validImgSize! : string;
 
   constructor(private shoppingBagservice : MyShoppingBagService){}
-  
-  onSelectFile(eve : any){
-    if(eve.target.files){
-      var reader = new FileReader();
-      reader.readAsDataURL(eve.target.files[0]);
-      reader.onload=(event : any)=>{
-        this.url = event.target.result;
-      }
-    }
-  }
- 
+
   ngOnInit(): void {
     this.listData = [];
 
@@ -43,6 +33,10 @@ export class DialogBoxComponent implements OnInit{
     })
 
   }
+  
+ 
+ 
+
   
   addProduct(){
     this.listData.push(this.productForm.value);
@@ -65,4 +59,20 @@ export class DialogBoxComponent implements OnInit{
   inc(item : any){
     item.pQty += 1;
   }
+
+  onSelectFile(eve : any) : void{
+    // const inputElement = eve.target as HTMLInputElement;
+    const file = eve.target.files[0];
+    if (file.size > 100 * 1024) {
+      this.validImgSize = 'Image size must be less than 100KB.';
+    } else {
+      this.validImgSize = '';
+    
+      var reader = new FileReader();
+      reader.readAsDataURL(eve.target.files[0]);
+      reader.onload=(event : any)=>{
+        this.url = event.target.result;
+      }
+  }
+}
 }

@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label for="product-name" class="col-form-label">Product Name</label>
                         <input type="text" class="form-control" id="product-name" formControlName="pName">
-                        <span *ngIf="!productForm.get('pName').valid && productForm.get('pName').touched && productForm.get('pName').errors.required">
+                        <span *ngIf="!productForm.get('pName').valid && productForm.get('pName').touched && productForm.get('pName').errors.required" class="text-danger">
                             *Product Name is required
                         </span>
 
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label for="product-price" class="col-form-label">Price</label>
                         <input type="number" class="form-control" id="product-price" formControlName="pPrice">
-                        <span *ngIf="!productForm.get('pPrice').valid && productForm.get('pPrice').touched && productForm.get('pPrice').errors.required">
+                        <span *ngIf="!productForm.get('pPrice').valid && productForm.get('pPrice').touched && productForm.get('pPrice').errors.required" class="text-danger">
                             *Product price is required
                         </span>
 
@@ -42,6 +42,12 @@
                         <label for="product-image" class="col-form-label">Upload Image</label><br>
                         <input type="file" class="form-control" id="product-image" formControlName="pImg"
                             (change)="onSelectFile($event)">
+                        <span *ngIf="!productForm.get('pImg').valid && productForm.get('pImg').touched && productForm.get('pImg').errors.required" class="text-danger">
+                            *Product image is required
+                        </span>
+                        <span *ngIf="validImgSize" class="text-danger">
+                            {{ validImgSize }}
+                        </span>
                     </div>
                 </div>
                 <div class="modal-footer">
